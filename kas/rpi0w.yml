@@ -1,0 +1,18 @@
+header:
+  version: 14
+  includes:
+    - base.yml
+
+machine: raspberrypi0-wifi
+target: core-image-base
+
+repos:
+  meta-raspberrypi:
+    url: https://github.com/agherzan/meta-raspberrypi.git
+    branch: scarthgap
+    path: layers/meta-raspberrypi
+
+local_conf_header:
+  rpi0w: |
+    # See: linux-firmware-rpidistro in docs/ipcompliance.md
+    LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
