@@ -43,3 +43,6 @@ ENV PIPX_HOME=/opt/pipx
 ENV PIPX_BIN_DIR=/usr/local/bin
 RUN pipx install kas
 ENV PATH="/usr/local/bin:${PATH}"
+
+RUN mkdir -p /yocto/downloads /yocto/sstate-cache && \
+    chown -R ubuntu:ubuntu /yocto
