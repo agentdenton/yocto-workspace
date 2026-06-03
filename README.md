@@ -1,8 +1,12 @@
-### rpi-elinux
+# yocto-workspace
 
 Yocto build environment for Raspberry Pi Zero W using Docker and kas.
 
-#### Quick Start
+## Install docker
+
+Follow instructions: https://get.docker.com/
+
+## Quick Start
 
 Build and start the container:
 
@@ -28,7 +32,7 @@ Or
 just rpi0w
 ```
 
-#### Clean Up
+## Clean Up
 
 Stop the container:
 
