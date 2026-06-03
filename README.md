@@ -19,7 +19,13 @@ docker compose exec -it yocto-dev bash
 Build the image:
 
 ```bash
-kas build rpi0w.yml
+kas build kas/rpi0w.yml
+```
+
+Or
+
+```bash
+just rpi0w
 ```
 
 #### Clean Up
@@ -33,5 +39,5 @@ docker compose down
 Remove the persistent cache volumes:
 
 ```bash
-docker volume rm rpi-elinux_yocto-dl rpi-elinux_yocto-sstate
+docker volume rm yocto-workspace_yocto-dl yocto-workspace_yocto-sstate
 ```
