@@ -23,7 +23,7 @@ docker compose exec -it yocto-dev bash
 Build the image:
 
 ```bash
-kas build kas/rpi0w.yml
+KAS_BUILD_DIR=build-rpi0w kas build kas/rpi0w.yml
 ```
 
 Or
