@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y \
     zstd \
     liblz4-tool \
     vim \
+    just \
     pipx
 
 RUN locale-gen en_US.UTF-8
