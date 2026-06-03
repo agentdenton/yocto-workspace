@@ -16,4 +16,10 @@ services:
     volumes:
       - .:/workspace
       - ~/.ssh:/home/ubuntu/.ssh:ro
+      - yocto-dl:/yocto/downloads
+      - yocto-sstate:/yocto/sstate-cache
     command: sleep infinity
+
+volumes:
+  yocto-dl:
+  yocto-sstate:
