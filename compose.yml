@@ -1,0 +1,19 @@
+services:
+  yocto-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: yocto-dev
+    image: yocto-dev-img
+    user: "ubuntu"
+    pull_policy: build
+    privileged: true
+    tty: true
+    working_dir: "/workspace"
+    environment:
+      - TERM=xterm-256color
+      - HOME=/home/ubuntu
+    volumes:
+      - .:/workspace
+      - ~/.ssh:/home/ubuntu/.ssh:ro
+    command: sleep infinity
