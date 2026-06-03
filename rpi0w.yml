@@ -1,0 +1,56 @@
+header:
+  version: 14
+
+distro: poky
+machine: raspberrypi0-wifi
+target: core-image-base
+
+repos:
+  openembedded-core:
+    url: https://git.openembedded.org/openembedded-core
+    branch: scarthgap
+    path: layers/openembedded-core
+    layers:
+      meta:
+
+  meta-yocto:
+    url: https://git.yoctoproject.org/meta-yocto
+    branch: scarthgap
+    path: layers/meta-yocto
+    layers:
+      meta-poky:
+      meta-yocto-bsp:
+
+  meta-openembedded:
+    url: http://git.openembedded.org/meta-openembedded
+    path: layers/meta-openembedded
+    branch: scarthgap
+    layers:
+      meta-oe:
+      meta-python:
+      meta-networking:
+
+  bitbake:
+    url: https://git.openembedded.org/bitbake
+    branch: "2.8"
+    path: layers/bitbake
+    layers:
+      bitbake: excluded # Prevents kas from adding bitbake to BBLAYERS.
+
+  meta-raspberrypi:
+    url: https://github.com/agherzan/meta-raspberrypi.git
+    branch: scarthgap
+    path: layers/meta-raspberrypi
+
+local_conf_header:
+  stardard: |
+    DL_DIR = "/yocto/downloads"
+    SSTATE_DIR = "/yocto/sstate-cache"
+  license: |
+    # See: linux-firmware-rpidistro in docs/ipcompliance.md
+    LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
+  debug-tweaks: |
+    IMAGE_FEATURES += "empty-root-password allow-empty-password allow-root-login post-install-logging"
+  development:
+    PARALLEL_MAKE = "-j 8"
+    BB_NUMBER_THREADS = "8"
