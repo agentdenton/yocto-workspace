@@ -38,8 +38,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN locale-gen en_US.UTF-8
 
-RUN rm -rf /var/lib/apt/lists/*
-
 ENV PIPX_HOME=/opt/pipx
 ENV PIPX_BIN_DIR=/usr/local/bin
 RUN pipx install kas
