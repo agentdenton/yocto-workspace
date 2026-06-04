@@ -1,0 +1,7 @@
+header:
+  version: 14
+  includes:
+    - base.yml
+
+machine: beaglebone-yocto
+target: core-image-base
