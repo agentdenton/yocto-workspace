@@ -1,0 +1,52 @@
+stages:
+  - build
+
+variables:
+  KAS_BUILD_DIR: "build-ci"
+
+.before_script_template: &before_script
+  - apt-get update
+  - apt-get install -y --no-install-recommends
+    build-essential
+    chrpath
+    cpio
+    debianutils
+    diffstat
+    file
+    gawk
+    gcc
+    git
+    iputils-ping
+    libacl1
+    libcrypt-dev
+    locales
+    python3
+    python3-git
+    python3-jinja2
+    python3-pexpect
+    python3-pip
+    python3-subunit
+    socat
+    texinfo
+    unzip
+    wget
+    xz-utils
+    zstd
+    liblz4-tool
+    pipx
+  - locale-gen en_US.UTF-8
+  - export PIPX_HOME=/opt/pipx
+  - export PIPX_BIN_DIR=/opt/pipx/bin
+  - pipx install kas
+
+build:rpi0w:
+  stage: build
+  before_script:
+    - *before_script
+  script:
+    - useradd -m -s /bin/bash builder || true
+    - mkdir -p /yocto/downloads /yocto/sstate-cache
+    - chown -R builder:builder /yocto .
+    - su builder -c "/opt/pipx/bin/kas build kas/rpi0w.yml"
+  only:
+    - main
